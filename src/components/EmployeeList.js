@@ -37,15 +37,15 @@ class EmployeeList extends Component {
     return (
       <ListView 
         enableEmptySections
-        dataSource={this.dataSource}
-        renderRow={this.renderRow}
       />
     );
   }
 }
 
-const mapStateToProps = ({ employees }) => {
-  console.log(employees)
+const mapStateToProps = state => {
+  const employees = _.map(state.employees, (val, uid) => {
+    return { ...val, uid };
+  });
   return { employees };
 };
 
